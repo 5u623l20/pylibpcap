@@ -28,15 +28,28 @@ static char _doc_##NAME[] = VALUE;\
 %{
 #include <pcap.h>
 #include "pypcap.h"
+
+#include "constants.c"
 %}
-
-%include constants.i
-
 
 
 %init %{
   /* d is the dictionary for the current module */
   init_errors(d);
+
+  /* the DLT dictionary holds any DLT_* constants available on this platform */
+  {
+    PyObject *dlt = PyDict_New();
+    SWIG_Python_InstallConstants(dlt, pcapmodule_DLT);
+    PyDict_SetItemString(d, "DLT", dlt);
+    Py_DECREF(dlt);
+  }
+
+%}
+
+%pythoncode %{
+for dltname, dltvalue in _pcap.DLT.items():
+  globals()[dltname] = dltvalue
 
 %}
 
@@ -128,7 +141,7 @@ typedef struct {
 /* functions not associated with a pcapObject instance */
 char *lookupdev(void);
 DOC(lookupdev,lookupdev_doc)
-PyObject *findalldevs(void);
+PyObject *findalldevs(int unpack=1);
 DOC(findalldevs,findalldevs_doc)
 PyObject *lookupnet(char *device);
 DOC(lookupnet,lookupnet_doc)
