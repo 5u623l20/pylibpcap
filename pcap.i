@@ -108,7 +108,7 @@ typedef struct {
     DOC(pcapObject_setfilter,pcapObject_setfilter_doc)
     void loop(int cnt, PyObject *PyObj);
     DOC(pcapObject_loop,pcapObject_loop_doc)
-    void dispatch(int cnt, PyObject *PyObj);
+    int dispatch(int cnt, PyObject *PyObj);
     DOC(pcapObject_dispatch,pcapObject_dispatch_doc)
     PyObject *next(void);
     DOC(pcapObject_next,pcapObject_next_doc)
@@ -126,7 +126,6 @@ typedef struct {
     DOC(pcapObject_stats,pcapObject_stats_doc)
     int fileno(void);
     DOC(pcapObject_fileno,pcapObject_fileno_doc)
-
   }
 } pcapObject;
 

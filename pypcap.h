@@ -19,7 +19,6 @@
 typedef struct {
   pcap_t *pcap;
   pcap_dumper_t *pcap_dumper;
-  PyObject *callback;
 } pcapObject;
 
 
@@ -39,7 +38,7 @@ int pcapObject_getnonblock(pcapObject *self);
 void pcapObject_setfilter(pcapObject *self, char *str,
                           int optimize, int netmask);
 PyObject *pcapObject_next(pcapObject *self);
-void pcapObject_dispatch(pcapObject *self, int cnt, PyObject *PyObj);
+int pcapObject_dispatch(pcapObject *self, int cnt, PyObject *PyObj);
 void pcapObject_loop(pcapObject *self, int cnt, PyObject *PyObj);
 int pcapObject_datalink(pcapObject *self);
 int pcapObject_snapshot(pcapObject *self);
@@ -58,6 +57,7 @@ char *lookupdev(void);
 PyObject *lookupnet(char *device);
 void pcapObject_setfilter(pcapObject *self, char *str,
                           int optimize, int netmask);
+static
 void PythonCallBack(u_char *PyFunc,
                     const struct pcap_pkthdr *header,
                     const u_char *packetdata);
