@@ -14,6 +14,8 @@
  */
 
 #include <pcap.h>
+#include <sys/types.h>
+#include <netinet/in.h>
 
 /* the pcap class */
 typedef struct {
