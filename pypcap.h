@@ -53,7 +53,7 @@ int pcapObject_fileno(pcapObject *self);
 
 
 /* functions that are not methods of pcapObject */
-PyObject *findalldevs(void);
+PyObject *findalldevs(int unpack);
 char *lookupdev(void);
 PyObject *lookupnet(char *device);
 void pcapObject_setfilter(pcapObject *self, char *str,
