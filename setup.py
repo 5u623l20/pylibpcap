@@ -172,7 +172,7 @@ else:
 
 setup (# Distribution meta-data
         name = "pylibpcap",
-        version = "0.5",
+        version = "0.5.1",
         license = "BSD",
         description = 'pylibpcap is a python module for the libpcap packet capture library.',
         long_description = 'pylibpcap is a python module for the libpcap packet capture library.',
