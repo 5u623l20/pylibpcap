@@ -36,7 +36,7 @@ include_dirs = [ ]
 # Versions prior to 0.8 don't have pcap_breakloop().
 # config_defines.append('WITHOUT_BREAKLOOP')
 
-# Versions prior to XXX don't have pcap_list_datalinks().
+# Versions prior to 0.7.2 or so don't have pcap_list_datalinks().
 # config_defines.append('WITHOUT_LIST_DATALINKS')
 
 # Some versions don't have pcap_version[].
@@ -188,5 +188,13 @@ setup (# Distribution meta-data
         cmdclass = {'clean': pcapclean,
                     'build_ext': pcap_build_ext,
                     'build': build_shadowed},
+        classifiers = [ 'Development Status :: 4 - Beta',
+                        'Intended Audience :: Developers',
+                        'Intended Audience :: System Administrators',
+                        'License :: OSI Approved :: BSD License',
+                        'Programming Language :: C',
+                        'Programming Language :: Python',
+                        'Topic :: Software Development :: Libraries :: Python Modules',
+                        'Topic :: System :: Networking :: Monitoring' ],
       )
 
