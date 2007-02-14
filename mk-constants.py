@@ -7,7 +7,8 @@
 #   constants.i (C) 2001,2002, David Margrave
 # 
 # This program is free software; you can redistribute it and/or
-# modify it under the terms of the BSD Licence
+# modify it under the terms of the BSD Licence. See the file COPYING
+# for details.
 # 
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
