@@ -48,7 +48,14 @@ extern char pcap_version[];
   /* the DLT dictionary holds any DLT_* constants available on this platform */
   {
     PyObject *dlt = PyDict_New();
-    SWIG_Python_InstallConstants(dlt, pcapmodule_DLT);
+    int constantIndex;
+    for(constantIndex = 0; pcapmodule_DLT[constantIndex].name; constantIndex ++) {
+        PyObject *v = PyInt_FromLong(pcapmodule_DLT[constantIndex].value);
+        PyDict_SetItemString(dlt,
+                             pcapmodule_DLT[constantIndex].name,
+                             v);
+        Py_DECREF(v);
+    }
     PyDict_SetItemString(d, "DLT", dlt);
     Py_DECREF(dlt);
   }
