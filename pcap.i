@@ -71,6 +71,7 @@ extern char pcap_version[];
 %pythoncode %{
 for dltname, dltvalue in _pcap.DLT.items():
   globals()[dltname] = dltvalue
+del dltname, dltvalue
 
 %}
 
