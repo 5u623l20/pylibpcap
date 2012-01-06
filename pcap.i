@@ -112,9 +112,9 @@ del dltname, dltvalue
 
 typedef struct {
   %extend {
-    pcapObject(void);
+    pcapObject();
     DOC(new_pcapObject,"create a pcapObject instance")
-    ~pcapObject(void);
+    ~pcapObject();
     DOC(delete_pcapObject,"destroy a pcapObject instance")
     void open_live(const char *device, int snaplen, int promisc, int to_ms);
     DOC(pcapObject_open_live,pcapObject_open_live_doc)
