@@ -21,27 +21,8 @@ sourcefiles = ["mk-constants.py", "pcap.i"]
 # if you are building against a non-installed version of libpcap,
 # specify its directory here, otherwise set this to None
 libpcap_dir = None
-# libpcap_dir = "/home/wiml/netsrc/libpcap/libpcap-0.7.2"
-# libpcap_dir = "/home/wiml/netsrc/libpcap/libpcap-0.8.3"
-# libpcap_dir = "/home/wiml/netsrc/libpcap/cvs.tcpdump.org/libpcap"
 
 include_dirs = [ ]
-
-# Depending on what version of libpcap you're using, you may need to
-# uncomment one of these lines.
-
-# Versions prior to 0.8 don't have pcap_lib_version().
-# config_defines.append('WITHOUT_PCAP_LIB_VERSION')
-
-# Versions prior to 0.8 don't have pcap_breakloop().
-# config_defines.append('WITHOUT_BREAKLOOP')
-
-# Versions prior to 0.7.2 or so don't have pcap_list_datalinks().
-# config_defines.append('WITHOUT_LIST_DATALINKS')
-
-# Some versions don't have pcap_version[].
-# config_defines.append('WITHOUT_VERSION_STRING')
-
 
 ### END OF CONFIGURATION ###
 # You shouldn't need to modify anything below this point unless you're
@@ -141,8 +122,11 @@ class pcap_build_ext(build_ext):
     # swig_sources ()
 
     def find_swig(self):
-        if 'SWIG' in os.environ:
-            return os.environ['SWIG']
+        if os.uname()[0] == "FreeBSD":
+            return '/usr/local/bin/swig3.0'
+        else:
+            if 'SWIG' in os.environ:
+                return os.environ['SWIG']
         return build_ext.find_swig(self)
 #
 
