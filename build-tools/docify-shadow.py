@@ -95,11 +95,6 @@ for i in range(0,len(data)):
 #i=i+1
 
 # put doc assignments inside of the __init__
-outfile.write('        import sys\n')
-outfile.write('        if sys.version_info[0]==2:\n')
-for method, fname in methods.items():
-    outfile.write('            self.%s.im_func.__doc__ = %s.__doc__\n' % (method, fname))
-outfile.write('        elif sys.version_info[0]>2:\n')
 for method, fname in methods.items():
     outfile.write('            self.%s.__func__.__doc__ = %s.__doc__\n' % (method, fname))
 
